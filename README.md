@@ -1,0 +1,2 @@
+# Documentation
+All OpenKitten documentation
