@@ -79,7 +79,40 @@ document.keys // ["key0", "key1", "key2", "key3", "key4"]
 document.values // [0, 1, 2, 3, 4]
 ```
 
-We have variadic subscripts:
+Dictionary Documents act like you would expect.
+
+```swift
+let document: Document = [
+  "hey": true,
+  "hello": 3.33
+]
+
+for (key, value) in document {
+	guard key == "hey" || key == "hello" else {
+		fatalError("Impossible!")
+	}
+	
+	guard value as? Bool == true || value as? Double == 3.33 else {
+		fatalError("Impossible!")
+	}
+}
+```
+
+Array Documents act in a similar way:
+
+```swift
+let document: Document = [true, false, 3.3, false, true]
+
+for (key, value) in document {
+	guard ["0", "1", "2", "3", "4"].contains(key) else {
+		fatalError("The key in an array is the position as string number")
+	}
+}
+```
+
+Documents can be easily embedded inside each other. Because of this we allow you to easily subscript a Document to access sub-Documents and even deeper layers of the structure using variadic subscripts.
+
+These subscripts accept Strings (for Dictionary Document keys) and `Int`egers (for Array positions or Dictionary positions). These work like you would expect from any other Array or Dictionary.
 
 ```swift
 var document = [
@@ -94,7 +127,7 @@ var document = [
 document["subdoc", "subsubdoc", "array", 2] // true
 ```
 
-Plus some extra features:
+Document also provides some extra features that are commonly used with BSON:
 
 ```swift
 var document: Document = [
@@ -108,5 +141,3 @@ document[dotNotated: "subdoc.value"] // 3
 
 document.flattened() // ["key": true, "subdoc.value": 3]
 ```
-
-All highly performant.

@@ -17,7 +17,7 @@ let hexString = "1234567890abcdef12345678"
 let objectId = try ObjectId(hexString)
 ```
 
-In some cases you might want to know the ObjectIds creation date. You can fetch a `Foundation.Date` from the ObjectId using `let objectIdCreationDate: Date = myObjectId.epoch`
+In some cases you might want to know the ObjectIds creation date. You can fetch a `Foundation.Date` from the ObjectId using `let objectIdCreationDate = myObjectId.epoch`
 
 Last but not least, ObjectIds are hashable, so they're usable for a key in a Dictionary.
 
@@ -28,4 +28,4 @@ let dictionary: [ObjectId: Document] = [
 ]
 ```
 
-In the case of MongoKitten/MongoDB this may be useful when you're creating a cache for information from the database. Instead of re-fetching this data from the database you can identify the data using the ObjectId easily.
+In the case of MongoKitten/MongoDB this may be useful when you're creating a cache for information from the database. Instead of re-fetching this data from the database you can identify the data using the ObjectId identifier easily.

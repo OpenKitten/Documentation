@@ -11,3 +11,21 @@ BSONPrimitives are representable as BSON binary data that can be put into the Va
 These primitives also have a typeIdentifier that identifies the type of the binary data.
 
 Adding custom types that does not conform to an unsupported/custom version of the BSON specification will *not* be deserialized and will result in corrupt data.
+
+The list of BSON Primitives:
+
+- Double
+- String
+- [Document](Document.md) (Array and Dictionary)
+- [ObjectId](ObjectId.md)
+- Bool
+- Int32
+- Int64
+- Binary
+- Decimal128
+- JavascriptCode
+- Null (not nil)
+- Date (from Foundation)
+- MinKey
+- MaxKey
+- NSRegularExpression (or RegularExpression on Linux)
