@@ -229,6 +229,63 @@ TODO for signature
 
 `public func update(_ updates: [(filter: Query, to: Document, upserting: Bool, multiple: Bool)], stoppingOnError ordered: Bool? = nil) throws -> Int {`
 
-```swift
+## Counting
 
+`count` can be used on a collection to count all Documents matching the provided requirements. If no requirements are provided, all documents will be counted.
+
+`count` will return the amount of updated matches.
+
+```swift
+try collection.count() // returns 5
+```
+
+### matching
+
+Count accepts the parameter `matching` which requires a Query to be provided.
+
+```swift
+try collection.count(matching: "first_name" == "Joannis") // returns 1 if only one user is named Joannis
+```
+
+### limitedTo
+
+Limits the results that will be counted.
+
+```swift
+try collection.count(limitedTo: 4) // returns 4, even if 5 users reside in the database
+```
+
+### skipping
+
+Skips X matching documents before counting.
+
+```swift
+try collection.count(skipping: 3) // returns 2, even if 5 users reside in the database
+try collection.count(limitedTo: 2, skipping: 4) // Will return 1 in this scenario. 4 will be skipped and only 1 remains to be counted.
+```
+
+## Removing
+
+`remove` removes all Documents matching the query but can be limited in the amount of removals. It will return the amount of objects that have been removed.
+
+```swift
+try collection.remove() // returns 5
+```
+
+The above example will remove all Documents.
+
+### matching
+
+Acts like all other matchers and expects a Query object. Only Documents matching the Query will be removed.
+
+```swift
+try collection.remove(matching: "first_name" == "Joannis") // Returns 1, only one user named "Joannis" exists
+```
+
+### limitedTo
+
+Will not return more than X Documents from the collection, even if more Documents match. Will return the first created Documents first.
+
+```swift
+try collection.remove(limitedTo: 3) // returns 3, even if 5 or more Documents exist
 ```
