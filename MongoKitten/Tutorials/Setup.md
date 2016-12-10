@@ -6,16 +6,10 @@ Database is initializable separately and allows access to a single database on a
 
 Before you create your own connection URL it's recommended to [read this](URL.md)
 
-You can instantiate a Server using one of two initializers. The first one accepts a MongoDB Connection URL.
+You can instantiate a Server using a MongoDB connection URL/String:
 
 ```swift
 let server = try Server(mongoURL: "mongodb://localhost")
-```
-
-or
-
-```swift
-let server = try Server(hostname: "localhost", port: 27017, authenticatedAs: (username: "username", password: "password", against: "admin")) throws
 ```
 
 The database also has two initializers. One accepts a connection URL as String. The database which is accessed is equal to the authentication database in this case.
