@@ -29,7 +29,7 @@ This accepts a username, password and database. If you don't know the authentica
 
 ### Connecting 
 
-The `automatially` parameter has been removed. MongoKitten will always connect automatically now and will always attempt to reconnect.
+The `automatically` parameter has been removed. MongoKitten will always connect automatically now and will always attempt to reconnect.
 
 `server.connect()` has been removed for the same reason.
 
@@ -77,7 +77,7 @@ The variadic subscripts come in two forms: a type inferred and a raw getter.
 The raw subscript will get the object as you present it. Which can be any ValueConvertible including all BSON types.
 
 `doc["subdoc", "boolean"] as Bool?` will get the value called "boolean" inside "subdoc" and will return a boolean if it's representable as one.
-`doc["_id"]` as String?` will try to convert the value to a String. So `Int64(3)` will become `"3"`. A String will stay a String, and ObjectIds will represent themselves as a hexadecimal String.
+`doc["_id"] as String?` will try to convert the value to a String. So `Int64(3)` will become `"3"`. A String will stay a String, and ObjectIds will represent themselves as a hexadecimal String.
 
 `doc["_id"] as String?` is exactly equal to `doc[raw: "_id"]?.string`. Both will now return an optional.
 
