@@ -37,7 +37,7 @@ The `automatically` parameter has been removed. MongoKitten will always connect 
 
 The `~` operator has been removed because Values are now directly embeddable inside Documents/Dictionary literals.
 
-However, all Documents need to have their type inferred now. This would look like the following
+However, all Documents need to have their type explicitely defined now. This would look like the following
 
 ```swift
 let name = "Joannis"
